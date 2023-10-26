@@ -1,0 +1,174 @@
+---
+title: "Pizza Sales"
+author: "Muhammad Satrio"
+date: "2023-10-26"
+output: rmarkdown::github_document
+
+---
+
+# Assessing the sales performance of the pizza shop for the pizza shop.
+
+# The purpose of this project is to assess sales performance and adjust the supply of ingredients for the upcoming year.
+
+```{r setup, include=FALSE}
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "README_figs/README-"
+)
+```
+
+## Import Data 
+
+```{r}
+pizza_sales <- read.csv("pizza_sales.csv")
+```
+
+## Install Package 
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+
+## Sales Quantity per Pizza Name
+
+```{r}
+pizza_totals <- pizza_sales %>%
+  group_by(pizza_name) %>%
+  summarize(total_quantity = sum(quantity)) %>%
+  arrange(desc(total_quantity))
+```
+
+```{r}
+kable(pizza_totals, caption = "<span style='color:black'><strong>Total Sales Quantity by Flavor</strong></span>", format = "html") 
+```
+
+## Sales Revenue per Pizza Name
+
+```{r}
+pizza_revenue_byname <- pizza_sales %>%
+  group_by(pizza_name) %>%
+  summarize(total_revenue = sum(total_price)) %>%
+  mutate(percentage = (total_revenue / sum(total_revenue)) * 100) %>% 
+  arrange(desc(total_revenue))
+```
+
+```{r}
+kable(pizza_revenue_byname, caption = "<span style='color:black'><strong>Total Sales Revenue by Flavor</strong></span>", format = "html") 
+```
+
+## Sales Quantity per Month
+
+```{r}
+pizza_sales <- pizza_sales %>% 
+  mutate(order_date = as.Date(order_date)) %>% 
+  mutate(month = format(order_date, "%m"))
+```
+
+```{r}
+sales_quantity <- pizza_sales %>% 
+  group_by(month) %>% 
+  summarise(total_sales = sum(quantity))
+```
+
+```{r}
+ggplot(sales_quantity, aes(x = month, y = total_sales)) +
+  geom_bar(stat = "identity", position = "dodge", fill = "red") +
+  geom_text(aes(label = total_sales), vjust = -0.5) +
+  labs(title = "Monthly Trend in Pizza Sales", x = "Month", y = "Total Sales Quantity") +
+  theme_minimal()
+```
+
+## Sales Quantity per Day
+
+```{r}
+pizza_sales$order_date <- as.Date(pizza_sales$order_date)
+```
+
+```{r}
+pizza_sales$day_of_week <- weekdays(pizza_sales$order_date)
+```
+
+```{r}
+pizza_sales$day_of_week <- factor(pizza_sales$day_of_week, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+```
+
+```{r}
+daily_sales <- aggregate(quantity ~ day_of_week, data = pizza_sales, sum)
+```
+
+```{r}
+ggplot(data = daily_sales, aes(x = day_of_week, y = quantity)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  geom_text(aes(label = quantity), vjust = -0.5) +
+  labs(title = "Daily Trend in Pizza Sales", x = "Day", y = "Total Sales Quantity") +
+  scale_x_discrete(labels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+```
+
+## Sales Quantity per Pizza Size
+
+```{r}
+sales_quantity_bysize <- pizza_sales %>% 
+  group_by(pizza_size) %>% 
+  summarise(total_sales_bysize = sum(quantity))
+```
+
+```{r}
+ggplot(sales_quantity_bysize, aes(x = pizza_size, y = total_sales_bysize)) +
+  geom_bar(stat = "identity", position = "dodge", fill = "yellow") +
+  geom_text(aes(label = total_sales_bysize), vjust = -0.5) +
+  labs(title = "Total Pizza Sales per Size", x = "Size", y = "Total Sales Quantity") +
+  theme_minimal()
+```
+
+## Sales Quantity per Pizza Category
+
+```{r}
+sales_quantity_bycategory <- pizza_sales %>% 
+  group_by(pizza_category) %>% 
+  summarise(total_sales_bycategory = sum(quantity))
+```
+
+```{r}
+ggplot(sales_quantity_bycategory, aes(x = pizza_category, y = total_sales_bycategory)) +
+  geom_bar(stat = "identity", position = "dodge", fill = "green") +
+  geom_text(aes(label = total_sales_bycategory), vjust = -0.5) +
+  labs(title = "Total Pizza Sales per Category", x = "Category", y = "Total Sales Quantity") +
+  theme_minimal()
+```
+
+## Total Ingredients Used
+
+```{r}
+pizza_sales$pizza_ingredients <- strsplit(pizza_sales$pizza_ingredients, ",")
+```
+
+```{r}
+total_ingredients_used <- pizza_sales %>%
+  unnest(pizza_ingredients) %>%
+  count(pizza_ingredients, sort = TRUE)
+
+kable(total_ingredients_used, caption = "<span style='color:black'><strong>Total Quantity of Ingredients used</strong></span>", format = "html")
+```
+
+
+# Conclusion
+
+1. The highest sales day falls on Monday and the lowest sales falls on Friday  
+2. The peak sales month is July.
+3. Customers prefer classic category pizzas, and they tend to order large-sized pizzas.
+4. Garlic, tomatoes, onions, peppers, and cheese are frequently used ingredients throughout the year.
+
+# Recommendations
+
+1. Consider adding extra staff to the pizza shop on Mondays.
+2. Reevaluate the production of The Brie Carre Pizza due to its lower popularity.
+3. Simplify the pizza size options to small, medium, and large.
+4. Increase stock levels for ingredients such as garlic, tomatoes, onions, peppers, and cheese due to their frequent usage.
