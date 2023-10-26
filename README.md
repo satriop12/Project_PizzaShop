@@ -18,3 +18,5 @@ Recommendations
 2. Reevaluate the production of The Brie Carre Pizza due to its lower popularity.
 3. Simplify the pizza size options to small, medium, and large.
 4. Increase stock levels for ingredients such as garlic, tomatoes, onions, peppers, and cheese due to their frequent usage.
+
+file:///C:/Users/Muhammad%20Satrio/Documents/Aku/Data%20Analysis/Project%20Pizza/Pizza%20Sales.html 
