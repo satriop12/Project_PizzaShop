@@ -8,14 +8,14 @@ Points of Interest
 
 Conclusion
 
-1. The highest sales day falls on Friday, and the peak sales month is July.
+1. The highest sales day falls on Friday, and the peak sales month is May and July.
 2. Customers prefer classic category pizzas, and they tend to order large-sized pizzas.
-3. Garlic, tomatoes, onions, peppers, and cheese are frequently used ingredients throughout the year.
+3. Garlic, tomatoes, onions, peppers, and chicken are frequently used ingredients throughout the year.
 
 Recommendations
 
 1. Consider adding extra staff to the pizza shop on Thursdays, Fridays, and Saturdays.
 2. Reevaluate the production of The Brie Carre Pizza due to its lower popularity.
 3. Simplify the pizza size options to small, medium, and large.
-4. Increase stock levels for ingredients such as garlic, tomatoes, onions, peppers, and cheese due to their frequent usage.
+4. Increase stock levels for ingredients such as garlic, tomatoes, onions, peppers, and chicken due to their frequent usage.
 
