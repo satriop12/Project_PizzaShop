@@ -1,5 +1,5 @@
 Assessing the sales performance of the pizza shop for the pizza shop.
-Processing, analyzing, and visualizing datasets using RStudio. 
+Processing, analyzing, and visualizing datasets using Python. 
 The purpose of this project is to assess sales performance and adjust the supply of ingredients for the upcoming year.
 
 Points of Interest
