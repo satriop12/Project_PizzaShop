@@ -17,8 +17,8 @@ Conclusion
 Recommendations
 
 1. Consider adding extra staff to the pizza shop on Thursdays, Fridays, and Saturdays.
-2. Reevaluate the production of The Brie Carre Pizza due to its lower popularity.
-3. Simplify the pizza size options to small, medium, and large.
-4. Increase stock levels for ingredients such as garlic, tomatoes, onions, peppers, and chicken due to their frequent usage.
-5. The majority of customers only buy 1 pizza. To increase sales, attractive promo can also be implemented to encourage customers to buy more than 1 pizza. The quantity and unit price have a significant correlation with the total price. For promo, we can also slightly decrease the unit price, with the hope that the quantity will increase, thus resulting in an increase in total sales.
+2. Simplify the pizza size options to small, medium, and large. The purchase of XL and XXL-sized pizzas only occurs for The Greek Pizza.
+3. Increase stock levels for ingredients such as garlic, tomatoes, onions, peppers, and chicken due to their frequent usage.
+4. The majority of customers only buy 1 pizza. Purchases with quantities above 1 account for only 2% of the total purchases. To increase sales, attractive promo can also be implemented to encourage customers to buy more than 1 pizza.
+5. The quantity and unit price have a significant correlation with the total price. For promo, we can also slightly decrease the unit price, with the hope that the quantity will increase, thus resulting in an increase in total sales.
 
