@@ -12,6 +12,7 @@ Conclusion
 2. Customers prefer classic category pizzas, and they tend to order large-sized pizzas.
 3. Garlic, tomatoes, onions, peppers, and chicken are frequently used ingredients throughout the year.
 4. The Classic pizza category tends to have lower unit prices. The Classic pizza category is also the most frequently purchased or the most favorite, which may occur due to its relatively affordable price.
+5. The Brie Carre Pizza has the lowest sales, which is due to its relatively high unit price. The Brie Carre Pizza in size S is relatively more expensive than other pizzas in size S.
 
 Recommendations
 
